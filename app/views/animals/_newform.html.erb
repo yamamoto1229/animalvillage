@@ -1,4 +1,10 @@
-<%= form_for(@animal) do |f| %>
+<%= form_for(animal) do |f| %>
+	<% if animal.errors.any? %>
+	<%= animal.errors.count%>errors
+	  <% animal.errors.full_messages.each do |msg| %>
+	  	<%= msg %>
+	  <% end %>
+	<% end %>
 
 	<div class="field row">
 		<%= f.label :Title %>
@@ -6,7 +12,7 @@
 	</div>
 
 	<div class="field row">
-		<%= f.label :Opinion %>
+		<%= f.label :Opinion %> <!-- ここを変更 -->
 		<%= f.text_area :body, class: "col-xs-12 animal_body", value: '' %>
 	</div>
 
