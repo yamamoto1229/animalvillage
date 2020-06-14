@@ -6,13 +6,9 @@ class AnimalsController < ApplicationController
   end
 
   def show
+    @newanimal = Animal.new
   	@animal = Animal.find(params[:id])
     @user = @animal.user
-  end
-
-  def new
-  	# Viewへ渡すためのインスタンス変数に空のモデルオブジェクトを生成する。
-  	@animal = Animal.new
   end
 
   def create
