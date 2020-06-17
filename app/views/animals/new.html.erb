@@ -1,0 +1,53 @@
+<section class="slice sct-color-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 post_image_form">
+            <div class="section-title-wrapper style-1 v1">
+              <h3 class="section-title section-title-sm left">
+                <span>新規保護登録フォーム</span>
+              </h3>
+            </div>
+
+				<%= form_for(@animal) do |f| %>
+					<% if @animal.errors.any? %>
+					<%= @animal.errors.count%>errors
+					  <% @animal.errors.full_messages.each do |msg| %>
+					  	<%= msg %>
+					  <% end %>
+					<% end %>
+
+					<!--投稿フォーム記載-->
+                    <div class="row">
+						<div class="col-sm-12">
+							<%= f.label :image %>
+							<%= f.attachment_field :image, class: "animal_image" %>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-sm-12">
+							<%= f.label :新規保護動物 %>
+							<%= f.text_field :name, class: "col-xs-12 animal_name", value: '' %>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-sm-12">
+							<%= f.label :内容 %>
+							<%= f.text_area :body, class: "col-xs-12 animal_body", value: '' %>
+						</div>
+					</div>
+
+						<div class="actions row">
+							<%= f.submit  class: "btn btn-primary col-xs-12" %>
+						</div>
+				<% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
