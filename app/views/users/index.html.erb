@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-xs-12">
-	<h2>保護動物一覧</h2>
+	<h2>保護会員一覧</h2>
 	<!--users一覧 -->
 	<table class="table">
 		<thead>
@@ -14,9 +14,9 @@
 		<tbody>
 			<% @users.each do |user| %>
 			<tr>
-				<td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
+				<td><%= attachment_image_tag(user, :profile_image, fallback: "no_image.jpg") %></td>
 				<td><%= user.name%></td>
-				<td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
+				<td><%= link_to "会員情報詳細", user, class: "user_#{user.id}" %></td>
 			</tr>
 			<% end %>
 		</tbody>

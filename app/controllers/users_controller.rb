@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-	before_action :baria_user, only: [:update]
   def index
   	@users = User.all
   	@animal = Animal.new

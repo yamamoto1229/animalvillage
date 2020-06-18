@@ -1,34 +1,46 @@
-<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+<section class="slice sct-color-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
 
-		<h1>Editing animal</h1>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 animals_image_form">
+            <div class="section-title-wrapper style-1 v1">
+              <h3 class="section-title section-title-sm left">
+                <span>動物情報変更画面</span>
+              </h3>
+            </div>
 
-		<%= form_for(@animal) do |f| %>
-		    	<% if @animal.errors.any? %>
-				<%= @animal.errors.count%>errors
-				  <% @animal.errors.full_messages.each do |msg| %>
-				  	<%= msg %>
-				  <% end %>
+				<%= form_for(@animal) do |f| %>
+					<% if @animal.errors.any? %>
+					<%= @animal.errors.count%>errors
+					  <% @animal.errors.full_messages.each do |msg| %>
+					  	<%= msg %>
+					  <% end %>
+					<% end %>
+
+					<!--編集フォーム記載-->
+					 <div class="field row">
+						<%= f.label :画像変更 %>
+						<%= f.attachment_field :image, class: "col-xs-12 animal_image" %>
+					</div>
+						<div class="field row">
+							<%= f.label :名前 %>
+							<%= f.text_field :name, class: "col-xs-12 animal_title" %>
+						</div>
+
+						<div class="field row">
+							<%= f.label :内容 %>
+							<%= f.text_area :body, class: "col-xs-12 animal_body" %>
+						</div>
+
+						<div class="actions row">
+							<%= f.submit class: "btn btn-primary col-xs-12" %>
+						</div>
 				<% end %>
-
-			<div class="field row">
-				<%= f.label :Name %>
-				<%= f.text_field :name, class: "col-xs-12 animal_title" %>
-			</div>
-
-			<div class="field row">
-				<%= f.label :Opinion %>
-				<%= f.text_area :body, class: "col-xs-12 animal_body" %>
-			</div>
-
-			<div class="actions row">
-				<%= f.submit class: "btn btn-primary col-xs-12" %>
-			</div>
-		<% end %>
-		<%= link_to "Show", @animal, class: "animal_#{@animal.id}" %>
-		<%= link_to "Back", animals_path, class: "back" %>
-
-		</div>
-	<div class="col-md-3"></div>
-
-</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

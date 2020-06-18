@@ -16,13 +16,13 @@
 				<% @animals.each do |animal| %>
 				<tr>
 					<td>
-						<%= link_to(animal.user) do %>
-						<%= attachment_image_tag(animal.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %>
+						<%= link_to user_path(animal.user.id) do %>
+						<%= attachment_image_tag animal, :image, fallback: "no-image-mini.jpg" %>
 						<% end %>
 					</td>
 					<td><%= link_to animal.name, animal, class: "animal_#{animal.id}" %></td>
 					<td><%= animal.body %></td>
-					<td><%= link_to "コメント", animal_path(animal.id) %></td>
+					<td><%= link_to "詳細画面", animal_path(animal.id) %></td>
 				</tr>
 				<% end %>
 			</tbody>
