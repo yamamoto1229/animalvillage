@@ -1,31 +1,22 @@
 <div class="row">
-	<div class="col-xs-3">
-
-		<h2>User info</h2>
-		<%= render 'users/profile', user: current_user %>
-
-		<h2>New animal</h2>
-		<%= render 'animals/newform', animal: @newanimal  %>
-
-	</div>
-
-	<div class="col-xs-9">
-		<h2>animal detail</h2>
+	<div class="col-xs-12">
+		<h2>保護動物詳細</h2>
 
 		<table class="table">
 				<tr>
-					<td>
-						<%= link_to (@animal.user) do %>
-						<%= attachment_image_tag(@animal.user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %><br>
-						<%= @animal.user.name %>
-						<% end %>
-					</td>
-					<td><%= link_to @animal.name, @animal %></td>
+					<td><%= attachment_image_tag @animal, :image, fallback: "no-image-mini.jpg" %></td>
+					<td><%= @animal.name %></td>
 					<td><%= @animal.body %></td>
 					<% if @animal.user == current_user %>
 
-					<td><%= link_to "Edit",edit_animal_path(@animal), class: "btn-sm btn-success edit_animal_#{@animal.id}" %></td>
-					<td><%= link_to "Destroy",@animal, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_animal_#{@animal.id}" %></td>
+					<td>
+						<%= link_to (@animal.user) do %>
+						<%= @animal.user.name %>
+						<% end %>
+					</td>
+
+					<td><%= link_to "編集画面",edit_animal_path(@animal), class: "btn-sm btn-success edit_animal_#{@animal.id}" %></td>
+					<td><%= link_to "削除",@animal, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_animal_#{@animal.id}" %></td>
 					<% end %>
 				</tr>
 		</table>

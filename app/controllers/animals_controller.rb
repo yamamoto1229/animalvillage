@@ -1,4 +1,5 @@
 class AnimalsController < ApplicationController
+
   def index
   	@animals = Animal.all
   	@animal = Animal.new
@@ -8,6 +9,11 @@ class AnimalsController < ApplicationController
   def show
     @newanimal = Animal.new
   	@animal = Animal.find(params[:id])
+    @user = @animal.user
+  end
+
+  def new
+    @animal = Animal.new
     @user = @animal.user
   end
 
@@ -47,6 +53,6 @@ class AnimalsController < ApplicationController
   private
 
   def animal_params
-  	params.require(:animal).permit(:name, :body)
+  	params.require(:animal).permit(:name, :body, :image)
   end
 end
