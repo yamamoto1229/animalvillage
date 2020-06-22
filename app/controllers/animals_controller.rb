@@ -10,6 +10,7 @@ class AnimalsController < ApplicationController
     @newanimal = Animal.new
   	@animal = Animal.find(params[:id])
     @user = @animal.user
+    @animal_comment = AnimalComment.new
   end
 
   def new
