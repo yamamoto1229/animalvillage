@@ -8,6 +8,7 @@
 					<td><%= attachment_image_tag @animal, :image, fallback: "no-image-mini.jpg" %></td>
 					<td><%= @animal.name %></td>
 					<td><%= @animal.body %></td>
+
 					<% if @animal.user == current_user %>
 
 					<td>
@@ -15,7 +16,6 @@
 						<%= @animal.user.name %>
 						<% end %>
 					</td>
-
 					<td><%= link_to "編集画面",edit_animal_path(@animal), class: "btn-sm btn-success edit_animal_#{@animal.id}" %></td>
 					<td><%= link_to "削除",@animal, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_animal_#{@animal.id}" %></td>
 					<% end %>
@@ -26,6 +26,12 @@
 
 				</tr>
 		</table>
+		        							<!--クリップ機能-->
+		            <div class="clip">
+		            	<%= link_to "この動物をクリップ", animal_path(@animal), method: :post %>
+		            	<span class="glyphicon glyphicon-tag" aria-hidden="true"></span>		            		
+		            </div>
+
 					<!--コメント機能-->
 					<div class="comment-list bt style-2" id="comments">
 			            <div class="float-wrapper">

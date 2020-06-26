@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :animals, dependent: :destroy
   has_many :animal_comments, dependent: :destroy
+  has_many :clips, dependent: :destroy
+  has_many :animals, through: :clips
 
   attachment :profile_image
 

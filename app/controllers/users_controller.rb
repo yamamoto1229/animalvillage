@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   	@animals = @user.animals
   	@animal = Animal.new
+    @clips = Clip.where(animal_id: @animal.id).all
   end
 
   def update

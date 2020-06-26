@@ -3,10 +3,13 @@
 		<h2>お名前</h2>
 		<%= render 'users/profile', user: current_user %>
 	</div>
+	<div class="col-xs-3">
+		<%= render 'clips/list', clips: @clips %>	
+	</div>
 </div>
 <div class="row">
 		<div class="col-xs-12">
-		<h2>会員保護動物一覧</h2>
+		<h2>掲載保護動物一覧</h2>
 		<!--animals一覧 -->
 		<table class="table table-hover table-inverse">
 			<thead>

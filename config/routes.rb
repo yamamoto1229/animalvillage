@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :animals, only: [:index, :show, :new, :create, :destroy, :edit, :update] do
   	resources :animal_comments, only: [:create, :destroy]
+  	member do
+  	  post "add", to: "clips#create"
+  	end
+  	resources :clips, only: [:destroy]
   end
   resources :users, only: [:index, :show, :new, :create, :destroy, :edit, :update] do
   end
