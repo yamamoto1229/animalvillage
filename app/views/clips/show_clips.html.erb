@@ -1,0 +1,11 @@
+
+<h2>クリップ一覧(<%= @clips.length %>匹)</h2>
+<div>
+    <% @clips.each do |clip| %>
+      <% @animal = clip.user_id %>
+      <% user = User.find(@user) %>
+      <div>
+        <%= link_to animal.animalname ,animal_path(animal) %><br/>
+      </div>
+    <% end %>
+</div>

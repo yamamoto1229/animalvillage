@@ -2,12 +2,14 @@ class UsersController < ApplicationController
   def index
   	@users = User.all
   	@animal = Animal.new
+    @clips = Clip.where(animal_id: @animal.id).all
   end
 
   def show
   	@user = User.find(params[:id])
-  	@animals = @user.animals
+  	
   	@animal = Animal.new
+    @animals = Animal.where(user_id: @user.id)
     @clips = Clip.where(animal_id: @animal.id).all
   end
 

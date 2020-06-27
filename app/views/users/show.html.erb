@@ -1,14 +1,18 @@
 <div class="row">
-	<div class="col-xs-3">
-		<h2>お名前</h2>
+
+	<div class="col-lg-9" style="background-color: orange;">
+	<h2>クリップ一覧</h2>
+	</div>
+
+	<div class="col-xs-3">	
 		<%= render 'users/profile', user: current_user %>
 	</div>
-	<div class="col-xs-3">
-		<%= render 'clips/list', clips: @clips %>	
+	<div class="col-xs-9">
+		<%= render 'clips/list', clips: @clips %>
 	</div>
 </div>
 <div class="row">
-		<div class="col-xs-12">
+	<div class="col-xs-12">
 		<h2>掲載保護動物一覧</h2>
 		<!--animals一覧 -->
 		<table class="table table-hover table-inverse">
@@ -25,7 +29,7 @@
 				<% @animals.each do |animal| %>
 				<tr>
 					<td>
-						<%= link_to (animal.user) do %>
+						<%= link_to users_path(animal.user_id) do %>
 						<%= attachment_image_tag animal, :image, fallback: "no-image-mini.jpg" %></td>
 						<% end %>
 					</td>
@@ -36,7 +40,7 @@
 			</tbody>
 		</table>
 		<!--animals一覧 -->
-		</div>
+	</div>
 </div>
 
 

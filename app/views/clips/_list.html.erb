@@ -1,11 +1,21 @@
 
-<h2>クリップ一覧(<%= @clips.length %>匹)</h2>
-<div>
     <% @clips.each do |clip| %>
-      <% @animal = clip.user_id %>
-      <% user = User.find(@user) %>
-      <div class ="name2">
-        <%= link_to user.username ,user_path(user) %><br/>
-      </div>
+      <% animal = Animal.find(clip.animal) %>
+            <div class="name3">
+                <%= link_to animal.animal_name, animal_path(animal) %>      
+            </div>
+
+            <div class="name2">
+                <%= link_to "クリップから削除",clip_path(clip), method: :delete %>    
+            </div>
+
+            <div class="name2">
+                <%= animal.animal_date.strftime("%Y-%m-%d %H:%M:%S")  %>
+            </div>
+
+            <div class="name2">
+                <%= animal.animal_location %>
+            </div>
+
+    <br />
     <% end %>
-</div>

@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   	resources :animal_comments, only: [:create, :destroy]
   	member do
   	  post "add", to: "clips#create"
+      get "show_clips" => "clips#show_clips"
   	end
-  	resources :clips, only: [:destroy]
+  end
+  resources :clips, only: [:index, :show, :create, :destroy] do
   end
   resources :users, only: [:index, :show, :new, :create, :destroy, :edit, :update] do
   end

@@ -3,18 +3,20 @@ class ClipsController < ApplicationController
 
 	def index
 	    @user = current_user
-	    @clips = Clip.where(user_id: @user.id).all
+	    @animal = Animal.find(params[:id])
+	    @clips = Clip.where(animal_id: @animal.id).all
+
 	end
 
-	def list
+	def show_clips
 	    @animal = Animal.find(params[:id])
 	    @clips = Clip.where(animal_id: @animal.id).all
 	end
 
 	def create
 		@user = current_user
-		@animal = Animal.find(params[:id])
-		@clip = Clip.new(animal_id: @animal, user_id: @user)
+		@animal = Animal.find(params[:id].to_i)
+		@clip = Clip.new(animal_id: @animal.id, user_id: @user.id)
 
 		if @clip.save
 			redirect_to user_path(current_user)
