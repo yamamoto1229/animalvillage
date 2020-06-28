@@ -16,9 +16,9 @@
 				<% @animals.each do |animal| %>
 				<tr>
 					<td>
-						<%= link_to user_path(animal.user.id) do %>
+						<%#= link_to user_path(animal.user.id) do %>
 						<%= attachment_image_tag animal, :image, fallback: "no-image-mini.jpg" %>
-						<% end %>
+						<%# end %>
 					</td>
 					<td><%= link_to animal.name, animal, class: "animal_#{animal.id}" %></td>
 					<td><%= animal.body %></td>
