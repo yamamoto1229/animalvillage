@@ -11,7 +11,7 @@ class AnimalCommentsController < ApplicationController
 	end
 
 	def destroy
-		binding.pry
+		#binding.pry
 	    AnimalComment.find_by(id: params[:id], animal_id: params[:animal_id]).destroy
 	    redirect_to animal_path(params[:animal_id])
     end
