@@ -10,6 +10,71 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-default a_navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample4">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+                <!--a class="navbar-brand" href="/"><h1 class="a_h_logo">ながのCAKE<img src="/assets/logo_nagano.jpg" width="100" height="52"></h1></a-->
+          </div>
+
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarEexample4">
+
+              <nav>
+          <ul class="nav navbar-nav navbar-">
+            <li>
+              <% if user_signed_in? %> <!--ログイン時の名前表示-->
+                <br><br>
+                <span>ようこそ、<%= current_user.name %>さん！</span>
+              <% else %>
+              <% end %>
+            </li>
+          </ul>
+              </nav>
+
+              <div class="row">
+                <br>
+                <ul class="nav navbar-nav navbar-right">
+                  <!--if文でサインインとアウト時の表示を変更-->
+                  <% if user_signed_in? %> <!--ログイン時の名前表示-->
+
+                    <li><%= link_to ' マイページ', user_path(current_user.id), type: 'button', class: 'btn btn-default navbar-btn a_h_btn' %></li><!--リンク反映済み-->
+                    <li><%= link_to '投稿フォーム', new_animal_path, type: 'button', class: 'btn btn-default navbar-btn a_h_btn' %></li><!--リンク反映済み-->
+
+                    <li><%= link_to ' 保護会員一覧', users_path, type: 'button', class: 'btn btn-default navbar-btn a_h_btn' %></li><!--リンク反映済み-->
+
+                    <li><%= link_to ' 動物一覧', animals_path, type: 'button', class: 'btn btn-default navbar-btn a_h_btn' %></li><!--リンク反映済み-->
+                    <li><%= link_to ' ログアウト', destroy_user_session_path, type: 'button', class: 'btn btn-default navbar-btn a_h_btn', method: :delete %></li><!--リンク反映済み-->
+                    <% else %>
+                    <li><%= link_to ' 動物一覧',animals_path, type: 'button', class: 'btn btn-default navbar-btn a_h_btn' %></li>
+                    <li><%= link_to ' 新規登録', new_user_registration_path, type: 'button', class: 'btn btn-default navbar-btn a_h_btn' %></li><!--リンク反映済み-->
+                    <li><%= link_to ' ログイン', new_user_session_path, type: 'button', class: 'btn btn-default navbar-btn a_h_btn' %></li><!--リンク反映済み-->
+                  <% end %>
+                </ul>
+
+                <!--検索機能-->
+                  <div class="form-group">
+                      <%= form_tag(search_path,:method => 'get') do |f| %>
+                        <span>動物名<%= radio_button_tag 'search_type', 'animal' %></span>
+                        <span>会員名<%= radio_button_tag 'search_type', 'user' %></span>
+                          <%= text_field_tag :search %>
+                          <%= submit_tag '検索', :name => nil %>
+                      <% end %>
+                  </div>
+
+              </div>
+
+          </div>
+        </div>
+        </nav>
+    </header>
+
     <%= yield %>
   </body>
 </html>

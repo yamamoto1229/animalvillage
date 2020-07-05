@@ -39,6 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
 end
 
 group :development do
@@ -63,4 +66,20 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # User機能追加
 gem 'devise'
+
+#画像投稿機能追加
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+
+#Bootstrap追加
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'
+
+#MySQL機能
+gem 'dotenv-rails'
+
+#環境変数管理
+group :production do
+  gem 'mysql2'
+end
 

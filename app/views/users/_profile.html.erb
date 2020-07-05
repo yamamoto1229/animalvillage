@@ -1,0 +1,17 @@
+<table class="table">
+		<tr><%= attachment_image_tag(user, :profile_image, fallback: "no_image.jpg") %></tr>
+
+		<tr>
+			<th>お名前</th>
+			<th><%= user.name %></th>
+		</tr>
+
+		<tr>
+			<th>会員情報</th>
+			<th><%= user.introduction %></th>
+		</tr>
+</table>
+<span>会員情報変更</span>
+<div class="row">
+	<%= link_to '',edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}" %>
+</div>
