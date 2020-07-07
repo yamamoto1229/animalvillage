@@ -2,7 +2,7 @@
 lock "~> 3.14.1"
 
 set :application, "my_app_name" # my_app_name → animalvillage
-set :repo_url, "git@example.com:me/my_repo.git" # git@example.com:me/my_repo.git → git@github.com:yamamoto1229/animalvillage.git
+set :repo_url, "git@github.com:yamamoto1229/animalvillage.git" # git@example.com:me/my_repo.git → git@github.com:yamamoto1229/animalvillage.git
 # アプリのアドレスは$ git remote -v コマンドで確認できます
 set :deploy_to, "/home/ec2-user/animalvillage"
 set :rbenv_ruby, '2.5.7'
