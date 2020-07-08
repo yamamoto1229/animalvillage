@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1"
 
-set :application, "my_app_name" # my_app_name → animalvillage
+set :application, "animalvillage" # my_app_name → animalvillage
 set :repo_url, "git@github.com:yamamoto1229/animalvillage.git" # git@example.com:me/my_repo.git → git@github.com:yamamoto1229/animalvillage.git
 # アプリのアドレスは$ git remote -v コマンドで確認できます
 set :deploy_to, "/home/ec2-user/animalvillage"
