@@ -42,6 +42,11 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
+  #カピストラーノ機能
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv'
 end
 
 group :development do
@@ -66,10 +71,20 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # User機能追加
 gem 'devise'
+
 #画像投稿機能追加
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+
 #Bootstrap追加
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
+
+#MySQL機能
+gem 'dotenv-rails'
+
+#環境変数管理
+group :production do
+  gem 'mysql2'
+end
 
