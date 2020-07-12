@@ -23,6 +23,10 @@ class AnimalsController < ApplicationController
   	@animal.user_id = current_user.id
   	if @animal.save #入力されたデータをdbに保存。
   		redirect_to @animal, notice: "successfully created animal!"#保存された場合の移動先を指定。
+      tags = Vision.get_image_data(@animal.image)
+      tags.each do |tag|
+        @animal.tags.create(name: tag)
+      end
   	else
       @user = current_user
   	  @animals = Animal.all
