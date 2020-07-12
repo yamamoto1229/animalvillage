@@ -1,2 +1,79 @@
-<h1>Animals#show</h1>
-<p>Find me in app/views/animals/show.html.erb</p>
+<div class="row">
+	<div class="col-xs-12">
+		<h2>保護動物詳細</h2>
+
+		<table class="table">
+				<tr>
+					<!--動物詳細記述-->
+					<td><%= attachment_image_tag @animal, :image, fallback: "no-image-mini.jpg" %></td>
+					<td><%= @animal.name %></td>
+					<td><%= @animal.body %></td>
+					<% if @animal.user == current_user %>
+
+					<td>
+						<%= link_to (@animal.user) do %>
+						<%= @animal.user.name %>
+						<% end %>
+					</td>
+
+					<td><%= link_to "編集画面",edit_animal_path(@animal), class: "btn-sm btn-success edit_animal_#{@animal.id}" %></td>
+					<td><%= link_to "削除",@animal, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_animal_#{@animal.id}" %></td>
+					<% end %>
+					<td><%#= profile_image.user.name %></td>
+					<%# binding.pry %>
+
+					<td><%#= link_to "#{animal_comments.count} コメント", animal_path(animal.id) %></td>
+
+				</tr>
+		</table>
+					<!--コメント機能-->
+					<div class="comment-list bt style-2" id="comments">
+			            <div class="float-wrapper">
+			              <h2 class="comment-count"><%= @animal.animal_comments.count %>件コメント</h2>
+			            </div>
+			            <ol>
+			              <% @animal.animal_comments.each do |animal_comment| %>
+			                <li class="comment">
+			                  <div class="comment-body bb">
+			                     <div class="comment-text">
+			                        <div class="comment-author clearfix">
+			                         <a href="#" class="link-author"><%= animal_comment.user.name %></a>
+			                         <span class="comment-meta">
+			                         <span class="comment-date"><%= animal_comment.created_at.strftime('%Y/%m/%d') %></span>
+			                         </span>
+			                        </div>
+
+			                        <!--コメント削除機能-->
+			                       <div class="comment-entry"><%= animal_comment.comment %>
+			                       	<% if animal_comment.user == current_user%>
+									  <div>
+									  	<%#= link_to "編集画面",edit_animal_animal_comment_path(animal_comment.animal_id, animal_comment), class: "btn-sm btn-success edit_animal_#{animal_comment.animal_id}" %>
+									    <%= link_to "削除", animal_animal_comment_path(animal_comment.animal_id, animal_comment), method: :delete, class: "btn btn-danger pull-right" %>
+									  </div>
+									<% end %>
+
+			                       </div>
+			                     </div>
+			                  </div>
+			                </li>
+			              <% end %>
+			            </ol>
+			        </div>
+
+			           <!-- Add comment section -->
+			          <div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
+			            <h3 class="section-title left">
+			              <span>コメント</span>
+			            </h3>
+			          </div>
+			          <%= form_for [@animal, @animal_comment] do |f| %>
+			            <div class="row">
+			               <div class="col-sm-12">
+			                 <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+			               </div>
+			            </div>
+			            <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+			          <% end %>
+	</div>
+</div>
+
