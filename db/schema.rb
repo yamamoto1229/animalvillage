@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_19_142003) do
+ActiveRecord::Schema.define(version: 2020_07_18_074610) do
 
   create_table "animal_comments", force: :cascade do |t|
     t.text "comment"
@@ -29,11 +29,27 @@ ActiveRecord::Schema.define(version: 2020_06_19_142003) do
     t.string "image_id"
   end
 
+  create_table "clips", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "animal_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["animal_id"], name: "index_clips_on_animal_id"
+    t.index ["user_id"], name: "index_clips_on_user_id"
+  end
+
   create_table "post_images", force: :cascade do |t|
     t.text "animal_name"
     t.string "image_id"
     t.text "caption"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.integer "animal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

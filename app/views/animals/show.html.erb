@@ -26,6 +26,13 @@
 
 				</tr>
 		</table>
+		            <!--画像認識機能-->
+					<h4>
+		              <% @animal.tags.each do |tag| %>
+		                <span class="label label-primary"><%= tag.name %></span>
+		              <% end %>
+		            </h4>
+
 					<!--コメント機能-->
 					<div class="comment-list bt style-2" id="comments">
 			            <div class="float-wrapper">

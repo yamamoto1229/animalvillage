@@ -3,6 +3,7 @@ class Animal < ApplicationRecord
 	belongs_to :user
 	attachment :image
 	has_many :animal_comments, dependent: :destroy
+	has_many :tags, dependent: :destroy
 
 	validates :name, presence: true
 	validates :body, presence: true, length: {maximum: 200}
